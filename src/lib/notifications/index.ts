@@ -1,14 +1,9 @@
+import { Capacitor } from "@capacitor/core";
 import type { NotificationProvider } from "./types";
 import { webProvider } from "./web";
-
-// عند التغليف بـ Capacitor: أنشئ capacitorProvider يستخدم @capacitor/local-notifications
-// وأرجعه هنا عند Capacitor.isNativePlatform().
-let provider: NotificationProvider = webProvider;
+import { nativeProvider } from "./native";
 
 export function getNotifier(): NotificationProvider {
-  return provider;
-}
-export function setNotifier(p: NotificationProvider) {
-  provider = p;
+  return Capacitor.isNativePlatform() ? nativeProvider : webProvider;
 }
 export type { NotificationProvider, NotifyPayload, PermissionState } from "./types";
