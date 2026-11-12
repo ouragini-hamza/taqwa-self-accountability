@@ -1,0 +1,15 @@
+{
+  "name": "تقوى | محاسبة النفس",
+  "short_name": "تقوى",
+  "description": "وقفات إيمانية ومحاسبة يومية للنفس",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f7f7f1",
+  "theme_color": "#174b3a",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
