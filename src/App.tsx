@@ -16,6 +16,7 @@ import { validateReminder, describeSchedule, INTERVAL_OPTIONS, type ReminderDraf
 import { SURAH_NAMES } from "./lib/quran";
 import { tick } from "./lib/notifications/scheduler";
 import { getNotifier } from "./lib/notifications";
+import { syncNativeReminders } from "./lib/notifications/native";
 
 type Tab = "home" | "reminders" | "muhasaba" | "agenda" | "adhkar" | "settings";
 const tabs: { id: Tab; label: string; icon: typeof Home }[] = [
@@ -71,6 +72,7 @@ export default function App() {
     document.documentElement.dir = "rtl";
     document.documentElement.classList.toggle("dark", data.settings.theme === "dark");
   }, [data.settings.theme]);
+  useEffect(() => { void syncNativeReminders(data.reminders); }, [data.reminders]);
   useEffect(() => {
     const timer = window.setInterval(() => {
       setNow(new Date());
