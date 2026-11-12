@@ -99,7 +99,7 @@ export default function App() {
       ...(editing?.lastFiredAt ? { lastFiredAt: editing.lastFiredAt } : {}),
       ...(editing?.linkedEventId ? { linkedEventId: editing.linkedEventId, linkedEventTitle: editing.linkedEventTitle } : {})
     };
-    repository.update(d => ({ ...d, reminders: editing ? d.reminders.map(r => r.id === editing.id ? next : r) : [...d.reminders, next] }));
+    repository.update(d => ({ ...d, reminders: editing && d.reminders.some(r => r.id === editing.id) ? d.reminders.map(r => r.id === editing.id ? next : r) : [...d.reminders, next] }));
     setReminderModal(false); setEditing(null); notify(editing ? "تم تحديث التذكير" : "تمت إضافة التذكير");
   };
   const toggleReminder = (id: string, enabled: boolean) => repository.update(d => ({ ...d, reminders: d.reminders.map(r => r.id === id ? { ...r, enabled } : r) }));
