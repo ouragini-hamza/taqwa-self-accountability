@@ -18,7 +18,8 @@
     "lucide-react": "^0.575.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "zod": "^3.25.76"
+    "zod": "^3.25.76",
+    "@capacitor/local-notifications": "^7.0.3"
   },
   "devDependencies": {
     "@types/react": "^19.2.0",
